@@ -23,29 +23,17 @@ def main(context):
         chatId = post_data.get("chatId")
         message = post_data.get("message")
         
-        try:
-            # Create a Skype connection
-            sk = Skype(username, password)
+        # Create a Skype connection
+        sk = Skype(username, password)
 
-            contact_username = chatId
-            contact = sk.contacts[contact_username]
+        contact_username = chatId
+        contact = sk.contacts[contact_username]
 
-            # Send a text message
-            message_content = message
-            contact.chat.sendMsg(message_content)
+        # Send a text message
+        message_content = message
+        contact.chat.sendMsg(message_content)
 
-            return context.res.send("Message sent successfully.")
-
-        except Exception as e:
-            return context.res.send(f"Error in Skype connection: {e}")
-
-        finally:
-            # Close the Skype connection to ensure proper cleanup
-            if sk:
-                sk.conn.close()
-                
-                # Do something with the post data
-                context.log(f"Skype connection closed.")
+        return context.res.send("Message sent successfully.")
 
     # `ctx.res.json()` is a handy helper for sending JSON
     return context.res.json(
