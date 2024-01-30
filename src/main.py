@@ -27,8 +27,10 @@ def main(context):
         return context.res.send("Hello, World!")
     
     if context.req.method == "POST":
+        
+        context.log(context.req)
         # Access POST data from context.req.data
-        post_data = context.req.data
+        post_data = context.req.body
 
         # Do something with the post data
         context.log(f"POST data: {post_data}")
