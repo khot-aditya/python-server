@@ -17,7 +17,7 @@ def main(context):
         
         context.log(context.req)
         # Access POST data from context.req.data
-        post_data = json.loads(context.req.body)
+        post_data = context.req.body
         username = post_data.get("username")
         password = post_data.get("password")
         chatId = post_data.get("chatId")
