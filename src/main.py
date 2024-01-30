@@ -25,6 +25,16 @@ def main(context):
         # Send a response with the res object helpers
         # `ctx.res.send()` dispatches a string back to the client
         return context.res.send("Hello, World!")
+    
+    if context.req.method == "POST":
+        # Access POST data from context.req.data
+        post_data = context.req.data
+
+        # Do something with the post data
+        context.log(f"POST data: {post_data}")
+
+        return context.res.send("post success")
+
 
     # `ctx.res.json()` is a handy helper for sending JSON
     return context.res.json(
