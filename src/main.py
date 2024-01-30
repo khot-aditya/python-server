@@ -23,6 +23,8 @@ def main(context):
             chatId = post_data.get("chatId")
             message = post_data.get("message")
             
+            context.log(username, password)
+            
             # Create a Skype connection
             sk = Skype(username, password)
 
