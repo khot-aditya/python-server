@@ -1,3 +1,4 @@
+import json
 from appwrite.client import Client
 import os
 from skpy import Skype
@@ -16,11 +17,11 @@ def main(context):
         
         context.log(context.req)
         # Access POST data from context.req.data
-        post_data = context.req.body
-        username = post_data.username
-        password = post_data.password
-        chatId = post_data.chatId
-        message = post_data.message
+        post_data = json.loads(context.req.body)
+        username = post_data.get("username")
+        password = post_data.get("password")
+        chatId = post_data.get("chatId")
+        message = post_data.get("message")
         
         try:
             # Create a Skype connection
